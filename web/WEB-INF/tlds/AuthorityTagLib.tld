@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib>
+	<description>Authority Taglib</description>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>AuthorityTagLib</short-name>
+	<uri></uri>
+	<small-icon></small-icon>
+	<tag>
+		<description>authorityTag</description>
+		<name>authorityTag</name>
+		<tag-class>Authority.AuthorityTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>role</name>
+			<required>true</required>
+		</attribute>		
+	</tag>
+</taglib>

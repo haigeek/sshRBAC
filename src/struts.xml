@@ -1,8 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-        "http://struts.apache.org/dtds/struts-2.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <!--权限-->
+    <package name="auth" extends="struts-default" namespace="/authority">
+        <action name="moduleAction" class="action.authority.ModuleAction">
+            <result name="showModuleList">/authority/module/showModuleList.jsp</result>
+            <result name="showModuleListAction" type="redirectAction">moduleAction!showModuleList.action</result>
+            <result name="showModule">/authority/module/updateModule.jsp</result>
+            <result name="failure">/authority/operationFail.jsp</result>
+        </action>
+
+        <action name="roleAction" class="action.authority.RoleAction">
+            <result name="showRoleList">/authority/role/showRoleList.jsp</result>
+            <result name="showRoleListAction" type="redirectAction">roleAction!showRoleList.action</result>
+            <result name="showRole">/authority/role/updateRole.jsp</result>
+            <result name="failure">/authority/operationFail.jsp</result>
+        </action>
+
+        <action name="userInfoAction" class="action.authority.UserInfoAction">
+            <result name="showUserInfoList">/authority/userInfo/showUserInfoList.jsp</result>
+            <result name="showUserInfoListAction" type="redirectAction">userInfoAction!showUserInfoList.action
+            </result>
+            <result name="showUserInfo">/authority/userInfo/updateUserInfo.jsp</result>
+            <result name="failure">/authority/operationFail.jsp</result>
+        </action>
+
+        <action name="shareModuleAction" class="action.authority.ShareModuleAction">
+            <result name="showModuleList">/authority/shareModule/showModuleList.jsp
+            </result>
+            <result name="showModuleListAction" type="redirectAction">shareModuleAction!showModuleList.action
+            </result>
+            <result name="showModule">/authority/shareModule/updateModule.jsp</result>
+            <result name="failure">/authority/operationFail.jsp</result>
+        </action>
+    </package>
+    <!--后台登录-->
+    <package name="bg" extends="struts-default" namespace="/bgLogin">
+        <action name="loginAction" class="action.authority.LoginAction">
+            <result name="success">/authority/index.jsp
+            </result>
+            <result name="loginAgain">/bgLogin/loginAgain.jsp
+            </result>
+            <result name="failure">/bgLogin/operationFail.jsp</result>
+            <result name="logout">/newfront/index.jsp</result>
+        </action>
+    </package>
+
+
 </struts>

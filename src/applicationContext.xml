@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/rbac?useUnicode=true&amp;characterEncoding=UTF-8">
+		</property>
+		<property name="user" value="root"></property>
+		<property name="password" value="123456"></property>
+		<property name="maxPoolSize" value="3"></property>
+		<property name="maxIdleTime" value="10"></property>
+	</bean>
+	<!--<bean id="sessionFactory"-->
+		<!--class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+		<!--<property name="dataSource" ref="dataSource"></property>-->
+		<!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+	<!--</bean>-->
+	<bean id="sessionFactory"
+		  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+			</props>
+		</property>
+
+		<property name="packagesToScan">
+			<value>entity.authority</value>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 让spring关注annotation -->
+	<context:annotation-config></context:annotation-config>
+	<!-- 让spring通过自动扫描来查询和管理bean -->
+	<context:component-scan base-package=".."></context:component-scan>
+
+	
+
+</beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib>
+
+	<description>List Taglib</description>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>ListTagLib</short-name>
+	<uri></uri>
+	<small-icon></small-icon>
+	<tag>
+		<description>view</description>
+		<name>view</name>
+		<tag-class>common.ListShow1</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>DBTab</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>field</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>showNum</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>linkField</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>linkTo</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>linkID</name>
+			<required>false</required>
+		</attribute>			
+	</tag>
+</taglib>
