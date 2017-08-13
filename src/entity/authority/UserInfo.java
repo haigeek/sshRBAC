@@ -36,6 +36,7 @@ public class UserInfo implements java.io.Serializable{
 		this.password = password;
 	}
 	@OneToMany(cascade= CascadeType.ALL,fetch= FetchType.LAZY,mappedBy="userInfo")
+	@JoinColumn(name = "id")
 	public Set<UserInfoRole> getUserInfoRoles() {
 		return userInfoRoles;
 	}

@@ -39,7 +39,8 @@ public class Module implements java.io.Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@OneToMany(cascade= CascadeType.ALL,fetch= FetchType.LAZY,mappedBy="module")
+	@OneToMany(cascade= CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "module")
+	@JoinColumn(name = "moduleId")
 	public Set<RoleModule> getRoleModules() {
 		return roleModules;
 	}

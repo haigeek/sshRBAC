@@ -36,7 +36,7 @@ public class Role  implements java.io.Serializable{
 		this.description = description;
 	}
 	@OneToMany(cascade= CascadeType.ALL,fetch= FetchType.LAZY,mappedBy="role")
-//	@JoinColumn(name = "roleId")
+	@JoinColumn(name = "roleId")
 	public Set<RoleModule> getRoleModules() {
 		return roleModules;
 	}
@@ -45,7 +45,7 @@ public class Role  implements java.io.Serializable{
 		this.roleModules = roleModules;
 	}
 	@OneToMany(cascade= CascadeType.ALL,fetch= FetchType.LAZY,mappedBy="role")
-//	@JoinColumn(name = "roleId")
+	@JoinColumn(name = "roleId")
 	public Set<UserInfoRole> getUserInfoRoles() {
 		return userInfoRoles;
 	}
